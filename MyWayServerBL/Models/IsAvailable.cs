@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MyWayServer.Models
+namespace MyWayServerBL.Models
 {
     public partial class IsAvailable
     {

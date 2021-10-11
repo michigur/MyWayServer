@@ -22,6 +22,7 @@
   <ItemGroup>
     <Folder Include="DataBaseScripts\" />
     <Folder Include="DTO\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>

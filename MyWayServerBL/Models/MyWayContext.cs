@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace MyWayServer.Models
+namespace MyWayServerBL.Models
 {
     public partial class MyWayContext : DbContext
     {

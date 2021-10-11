@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MyWayServerBL.Models
 {
-    public partial class MyWayDContext : DbContext
+    public partial class MyWayDBContext : DbContext
     {
-        public MyWayDContext()
+        public MyWayDBContext()
         {
         }
 
-        public MyWayDContext(DbContextOptions<MyWayDContext> options)
+        public MyWayDBContext(DbContextOptions<MyWayDBContext> options)
             : base(options)
         {
         }

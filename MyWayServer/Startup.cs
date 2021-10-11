@@ -41,7 +41,7 @@ namespace MyWayServer
 
             string connectionString = this.Configuration.GetConnectionString("MyWayD");
 
-            services.AddDbContext<MyWayDContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<MyWayDBContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

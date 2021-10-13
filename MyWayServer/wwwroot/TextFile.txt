@@ -1,1 +1,93 @@
-﻿
+﻿CREATE DATABASE MyWay;
+
+USE MyWay;
+
+CREATE TABLE Clients(
+ClientID int IDENTITY (1,1) PRIMARY KEY,
+ClientName nvarchar (15) NOT NULL,
+ClientsLastName nvarchar (15) NOT NULL,
+ClientsEmail nvarchar (25) NOT NULL,
+ClientsGenedr nvarchar (20) NOT NULL,
+ClientsBirthDay datetime NOT NULL,
+ClientsUsername nvarchar (30) NOT NULL,
+ClientsPassword nvarchar (30) NOT NULL,
+ClientCreditCardNumber VARBINARY(100) null,
+ClientCreditCardDate datetime NOT NULL,
+ClientCreditCardCVV int,
+ClientCurrentLocation geography
+);
+
+
+CREATE TABLE Managers(
+ManagerID int IDENTITY (1,1) PRIMARY KEY,
+ManagerName nvarchar (15) NOT NULL,
+ManagerLastName nvarchar (15) NOT NULL,
+ManagerEmail nvarchar (25) NOT NULL,
+ManagerGenedr nvarchar (20) NOT NULL,
+ManagerBirthDay datetime NOT NULL,
+ManagerUsername nvarchar (30) NOT NULL,
+ManagerPassword nvarchar (30) NOT NULL,
+ManagerType nvarchar (30),
+IsGlobalManager BIT
+);
+
+
+
+
+CREATE TABLE Fleet(
+FleetID int IDENTITY (1,1) PRIMARY KEY,
+ManagerID int,
+CONSTRAINT FK_ManagerID FOREIGN KEY (ManagerID)
+REFERENCES Managers(ManagerID),
+FleetDrivingLimit geography
+);
+
+
+CREATE TABLE Car(
+CarID int IDENTITY (1,1) PRIMARY KEY,
+FleetID int,
+CONSTRAINT FK_FleetID FOREIGN KEY (FleetID)
+REFERENCES Fleet(FleetID),
+CarCurrentLocation geography,
+CarNumSeats int,
+CarNumber int,
+CarTypeID int,
+CarTank int,
+CONSTRAINT FK_CarTypeID FOREIGN KEY (CarTypeID)
+REFERENCES CarType(CarTypeID)
+);
+
+CREATE TABLE CarType(
+CarTypeID int IDENTITY (1,1) PRIMARY KEY,
+CarTypeName nvarchar
+);
+
+CREATE TABLE RoutteCar(
+RouteCarID int IDENTITY (1,1) PRIMARY KEY,
+CarID int,
+CONSTRAINT FK_CarID FOREIGN KEY (CarID)
+REFERENCES Car(CarID),
+ClientID int ,
+CONSTRAINT FK_clientID FOREIGN KEY (ClientID)
+REFERENCES clients(ClientID),
+RouteDeputureTime datetime NOT NULL,
+RouteArrivalTime datetime NOT NULL,
+RouteDeputureLocation geography,
+RouteArrivalLocation geography,
+CarRoutteTypeID int,
+CONSTRAINT FK_CarRoutteTypeID FOREIGN KEY (CarRoutteTypeID)
+REFERENCES CarRoutteType(CarRoutteTypeID)
+);
+
+CREATE TABLE CarRoutteType(
+CarRoutteTypeID int IDENTITY (1,1) PRIMARY KEY,
+CarRoutteName nvarchar
+);
+
+
+
+CREATE TABLE IsAvailable(
+IsAvailableID int IDENTITY (1,1) PRIMARY KEY,
+IsAvailableName nvarchar (15) NOT NULL
+);
+

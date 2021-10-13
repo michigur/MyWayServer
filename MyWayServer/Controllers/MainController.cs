@@ -8,7 +8,7 @@ using MyWayServerBL.Models;
 
 namespace MyWayServer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("mywayAPI")]
     [ApiController]
     public class MainController : ControllerBase
     {
@@ -20,7 +20,29 @@ namespace MyWayServer.Controllers
         }
 
 
+        [Route("Login")]
+        [HttpGet]
+        public Client Login([FromQuery] string email, [FromQuery] string pass)
+        {
+            Client client = context.Login(email, pass);
 
+            //Check user name and password
+            if (client != null)
+            {
+                HttpContext.Session.SetObject("theUser", client);
+
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+
+                //Important! Due to the Lazy Loading, the user will be returned with all of its contects!!
+                return client;
+            }
+            else
+            {
+
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                return null;
+            }
+        }
 
     }
 }

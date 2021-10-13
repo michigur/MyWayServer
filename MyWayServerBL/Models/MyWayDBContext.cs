@@ -17,7 +17,7 @@ namespace MyWayServerBL.Models
         {
         }
 
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,26 +32,26 @@ namespace MyWayServerBL.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Hebrew_CI_AS");
 
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<Client>(entity =>
             {
-                entity.HasIndex(e => e.Email, "UC_Email")
+                entity.HasIndex(e => e.ClientsEmail, "UC_Email")
                     .IsUnique();
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.ClientId).HasColumnName("ID");
 
-                entity.Property(e => e.Email)
+                entity.Property(e => e.ClientsEmail)
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.FirstName)
+                entity.Property(e => e.ClientName)
                     .IsRequired()
                     .HasMaxLength(30);
 
-                entity.Property(e => e.LastName)
+                entity.Property(e => e.ClientsLastName)
                     .IsRequired()
                     .HasMaxLength(30);
 
-                entity.Property(e => e.UserPswd)
+                entity.Property(e => e.ClientsPassword)
                     .IsRequired()
                     .HasMaxLength(30);
             });

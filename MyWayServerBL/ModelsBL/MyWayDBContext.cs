@@ -18,5 +18,20 @@ namespace MyWayServerBL.Models
             return client;
         }
 
+        public Client SignUp(string email, string pswd, string fName, string lName, string uName, string gender, DateTime bday)
+        {
+            Client user = new Client()
+            {
+                ClientsUsername = uName,
+                ClientName = fName,
+                ClientsLastName = lName,
+                ClientsGenedr = gender,
+                ClientsEmail = email,
+                ClientsPassword = pswd,
+                ClientsBirthDay = bday,
+                
+            };
+            return user;
+        }
     }
 }

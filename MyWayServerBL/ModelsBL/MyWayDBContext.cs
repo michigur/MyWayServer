@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MyWayServerBL.Models
 {
-    public partial class MyWayDBContext: DbContext
+    public partial class MyWayDBContext: DbContext 
     {
         public Client Login(string email, string pswd)
         {

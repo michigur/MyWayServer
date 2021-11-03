@@ -12,10 +12,20 @@ namespace MyWayServerBL.Models
     {
         public Client Login(string email, string pswd)
         {
-            Client client = this.Clients
-                .Where(u => u.ClientsEmail == email && u.ClientsPassword == pswd).FirstOrDefault();
+            try
+            {
+                Client client = this.Clients
+                    .Where(u => u.ClientsEmail == email && u.ClientsPassword == pswd).FirstOrDefault();
 
-            return client;
+                return client;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+
+
+            }
         }
 
         public Client SignUp(string email, string pswd, string fName, string lName, string uName, string gender, DateTime bday)

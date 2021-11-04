@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MyWayServerBL.Models
+namespace MyWayServer.Models
 {
     public partial class RoutteCar
     {

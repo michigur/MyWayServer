@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace MyWayServerBL.Models
+namespace MyWayServer.Models
 {
     public partial class MyWayContext : DbContext
     {
@@ -22,7 +22,7 @@ namespace MyWayServerBL.Models
         public virtual DbSet<CarType> CarTypes { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Fleet> Fleets { get; set; }
-        public virtual DbSet<IsAvailable> IsAvailabls { get; set; }
+        public virtual DbSet<IsAvailabl> IsAvailabls { get; set; }
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<RoutteCar> RoutteCars { get; set; }
 
@@ -135,7 +135,7 @@ namespace MyWayServerBL.Models
                     .HasConstraintName("FK_ManagerID");
             });
 
-            modelBuilder.Entity<IsAvailable>(entity =>
+            modelBuilder.Entity<IsAvailabl>(entity =>
             {
                 entity.HasKey(e => e.IsAvailableId)
                     .HasName("PK__IsAvaila__02FF2B0E49B742F6");

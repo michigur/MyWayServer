@@ -1,0 +1,145 @@
+﻿
+ CREATE DATABASE MyWay;
+
+USE MyWay;
+
+CREATE TABLE Clients(
+ClientID int IDENTITY (1,1) PRIMARY KEY,
+ClientName nvarchar (15) NOT NULL,
+ClientsLastName nvarchar (15) NOT NULL,
+ClientsEmail nvarchar (25) NOT NULL,
+ClientsGenedr nvarchar (20) NOT NULL,
+ClientsBirthDay datetime NOT NULL,
+ClientsUsername nvarchar (30) NOT NULL,
+ClientsPassword nvarchar (30) NOT NULL,
+ClientCreditCardNumber nvarchar(100) null,
+ClientCreditCardDate datetime NOT NULL,
+ClientCreditCardCVV int,
+ClientCurrentLocation nvarchar(200)
+);
+
+
+CREATE TABLE Managers(
+ManagerID int IDENTITY (1,1) PRIMARY KEY,
+ManagerName nvarchar (15) NOT NULL,
+ManagerLastName nvarchar (15) NOT NULL,
+ManagerEmail nvarchar (25) NOT NULL,
+ManagerGenedr nvarchar (20) NOT NULL,
+ManagerBirthDay datetime NOT NULL,
+ManagerUsername nvarchar (30) NOT NULL,
+ManagerPassword nvarchar (30) NOT NULL,
+ManagerType nvarchar (30),
+IsGlobalManager BIT
+);
+
+
+
+
+CREATE TABLE Fleet(
+FleetID int IDENTITY (1,1) PRIMARY KEY,
+ManagerID int,
+CONSTRAINT FK_ManagerID FOREIGN KEY (ManagerID)
+REFERENCES Managers(ManagerID),
+FleetDrivingLimit nvarchar(200)
+);
+
+
+CREATE TABLE Car(
+CarID int IDENTITY (1,1) PRIMARY KEY,
+FleetID int,
+CONSTRAINT FK_FleetID FOREIGN KEY (FleetID)
+REFERENCES Fleet(FleetID),
+CarCurrentLocation nvarchar(200),
+CarNumSeats int,
+CarNumber int,
+CarTypeID int,
+CarTank int,
+CONSTRAINT FK_CarTypeID FOREIGN KEY (CarTypeID)
+REFERENCES CarType(CarTypeID)
+);
+
+CREATE TABLE CarType(
+CarTypeID int IDENTITY (1,1) PRIMARY KEY,
+CarTypeName nvarchar
+);
+
+CREATE TABLE RoutteCar(
+RouteCarID int IDENTITY (1,1) PRIMARY KEY,
+CarID int,
+CONSTRAINT FK_CarID FOREIGN KEY (CarID)
+REFERENCES Car(CarID),
+ClientID int ,
+CONSTRAINT FK_clientID FOREIGN KEY (ClientID)
+REFERENCES clients(ClientID),
+RouteDeputureTime datetime NOT NULL,
+RouteArrivalTime datetime NOT NULL,
+RouteDeputureLocation nvarchar(200),
+RouteArrivalLocation nvarchar(200),
+CarRoutteTypeID int,
+CONSTRAINT FK_CarRoutteTypeID FOREIGN KEY (CarRoutteTypeID)
+REFERENCES CarRoutteType(CarRoutteTypeID)
+);
+
+CREATE TABLE CarRoutteType(
+CarRoutteTypeID int IDENTITY (1,1) PRIMARY KEY,
+CarRoutteName nvarchar
+);
+
+
+
+CREATE TABLE IsAvailable(
+IsAvailableID int IDENTITY (1,1) PRIMARY KEY,
+IsAvailableName nvarchar (15) NOT NULL
+);
+
+﻿INSERT INTO Clients (ClientName
+      ,ClientsLastName
+      ,ClientsEmail
+      ,ClientsGenedr
+      ,ClientsBirthDay
+      ,ClientsUsername
+      ,ClientsPassword
+      ,ClientCreditCardNumber
+      ,ClientCreditCardDate
+      ,ClientCreditCardCVV)
+
+	  VALUES ('Michal'
+      ,'Gur'
+      ,'mgur100@gmail.com'
+      ,'Female'
+      ,2004-02-09
+      ,'michigur'
+      ,'dandan10!*'
+      ,'000000000000'
+      ,0000-00-00
+      ,'234')
+
+	  INSERT INTO Clients (ClientName
+      ,ClientsLastName
+      ,ClientsEmail
+      ,ClientsGenedr
+      ,ClientsBirthDay
+      ,ClientsUsername
+      ,ClientsPassword
+      ,ClientCreditCardNumber
+      ,ClientCreditCardDate
+      ,ClientCreditCardCVV)
+
+	  VALUES ('M'
+      ,'G'
+      ,'mg'
+      ,'Female'
+      ,2004-02-09
+      ,'michigur'
+      ,'dg'
+      ,'000000000000'
+      ,0000-00-00
+      ,'234')
+
+	  INSERt INTO Car(FleetID
+      ,CarCurrentLocation
+      ,CarNumSeats
+      ,CarNumber
+      ,CarTypeID
+      ,CarTank)
+	  VALUES(1,)

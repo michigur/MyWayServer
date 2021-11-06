@@ -38,7 +38,7 @@ namespace MyWayServer.Controllers
                 return null;
             }
         }
-
+ 
         [Route("Login")]
         [HttpGet]
         public Client Login([FromQuery] string email, [FromQuery] string pass)

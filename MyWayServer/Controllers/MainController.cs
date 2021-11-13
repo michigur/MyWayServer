@@ -12,9 +12,9 @@ namespace MyWayServer.Controllers
     [ApiController]
     public class MainController : ControllerBase
     {
-        MyWayDBContext context;
+        MyWayContext context;
 
-        public MainController(MyWayDBContext context)
+        public MainController(MyWayContext context)
         {
             this.context = context;
         }

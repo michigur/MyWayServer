@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using MyWayServerBL.Models;
 
 namespace MyWayServerBL.Models
 {
-    public partial class MyWayDBContext: DbContext 
+    public partial class MyWayContext: DbContext 
     {
         public Client Login(string email, string pswd)
         {

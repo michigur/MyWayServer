@@ -22,7 +22,7 @@ namespace MyWayServer.Models
         public virtual DbSet<CarType> CarTypes { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Fleet> Fleets { get; set; }
-        public virtual DbSet<IsAvailabl> IsAvailabls { get; set; }
+        public virtual DbSet<IsAvailable> IsAvailables { get; set; }
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<RoutteCar> RoutteCars { get; set; }
 
@@ -37,7 +37,7 @@ namespace MyWayServer.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "Hebrew_CI_AS");
 
             modelBuilder.Entity<Car>(entity =>
             {
@@ -135,12 +135,9 @@ namespace MyWayServer.Models
                     .HasConstraintName("FK_ManagerID");
             });
 
-            modelBuilder.Entity<IsAvailabl>(entity =>
+            modelBuilder.Entity<IsAvailable>(entity =>
             {
-                entity.HasKey(e => e.IsAvailableId)
-                    .HasName("PK__IsAvaila__02FF2B0E49B742F6");
-
-                entity.ToTable("IsAvailabl");
+                entity.ToTable("IsAvailable");
 
                 entity.Property(e => e.IsAvailableId).HasColumnName("IsAvailableID");
 
@@ -185,7 +182,7 @@ namespace MyWayServer.Models
             modelBuilder.Entity<RoutteCar>(entity =>
             {
                 entity.HasKey(e => e.RouteCarId)
-                    .HasName("PK__RoutteCa__218787560AD8D88D");
+                    .HasName("PK__RoutteCa__2187875683038EA9");
 
                 entity.ToTable("RoutteCar");
 

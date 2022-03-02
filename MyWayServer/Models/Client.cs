@@ -21,7 +21,7 @@ namespace MyWayServer.Models
         public string ClientsUsername { get; set; }
         public string ClientsPassword { get; set; }
         public string ClientCreditCardNumber { get; set; }
-        public DateTime ClientCreditCardDate { get; set; }
+        public DateTime? ClientCreditCardDate { get; set; }
         public int? ClientCreditCardCvv { get; set; }
         public string ClientCurrentLocation { get; set; }
 

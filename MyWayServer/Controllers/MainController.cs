@@ -63,5 +63,30 @@ namespace MyWayServer.Controllers
             }
         }
 
+
+        [Route("LoginM")]
+        [HttpGet]
+        public Manager Loginm([FromQuery] string email, [FromQuery] string pass)
+        {
+            Manager client = context.Loginm(email, pass);
+
+            //Check user name and password
+            if (client != null)
+            {
+                HttpContext.Session.SetObject("theUser", client);
+
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+
+                //Important! Due to the Lazy Loading, the user will be returned with all of its contects!!
+                return client;
+            }
+            else
+            {
+
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                return null;
+            }
+        }
+
     }
 }

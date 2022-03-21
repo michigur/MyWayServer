@@ -29,6 +29,24 @@ namespace MyWayServerBL.Models
             }
         }
 
+        public Manager Loginm(string email, string pswd)
+        {
+            try
+            {
+                Manager client = this.Managers
+                    .Where(u => u.ManagerEmail == email && u.ManagerPassword == pswd).FirstOrDefault();
+
+                return client;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+
+
+            }
+        }
+
         public Client SignUp(string email, string pswd, string fName, string lName, string uName, string gender, DateTime bday)
         {
             Client user = new Client()

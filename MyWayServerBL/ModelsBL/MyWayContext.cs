@@ -47,7 +47,36 @@ namespace MyWayServerBL.Models
             }
         }
 
-        public Client SignUp(string email, string pswd, string fName, string lName, string uName, string gender, DateTime bday)
+
+
+        public Client UpdateUser(Client user, Client updatedUser)
+        {
+            try
+            {
+                Client currentUser = this.Clients
+                .Where(u => u.ClientId == user.ClientId).FirstOrDefault();
+
+                currentUser.ClientName = updatedUser.ClientName;
+                currentUser.ClientsLastName = updatedUser.ClientsLastName;
+                currentUser.ClientsPassword = updatedUser.ClientsPassword;
+                currentUser.ClientsBirthDay = updatedUser.ClientsBirthDay;
+                currentUser.ClientsGenedr = updatedUser.ClientsGenedr;
+
+                this.SaveChanges();
+                return currentUser;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+
+
+
+
+        public Client SignUp(string email, string pswd, string fName, string lName, string uName, string gender, DateTime bday, string addres, string cardnum, DateTime cardate, int cvv)
         {
             Client user = new Client()
             {
@@ -58,6 +87,10 @@ namespace MyWayServerBL.Models
                 ClientsEmail = email,
                 ClientsPassword = pswd,
                 ClientsBirthDay = bday,
+                ClientCurrentLocation = addres,
+                ClientCreditCardCvv = cvv,
+                ClientCreditCardDate = cardate,
+                ClientCreditCardNumber = cardnum
                 
             };
             return user;

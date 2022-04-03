@@ -102,6 +102,17 @@ namespace MyWayServer.Controllers
 
 
 
+        [Route("GetCars")]
+        [HttpGet]
+        public List<Car> GetCars()
+        {
+            List<Car> list = context.Cars.ToList();
+
+            return list;
+        }
+
+
+
         [Route("UpdateUser")]
         [HttpPost]
         public Client UpdateUser([FromBody] Client user)

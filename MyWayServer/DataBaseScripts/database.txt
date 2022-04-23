@@ -143,3 +143,81 @@ IsAvailableName nvarchar (15) NOT NULL
       ,CarTypeID
       ,CarTank)
 	  VALUES(1,)
+
+
+
+      INSERT INTO Managers(
+ManagerName,
+ManagerLastName,
+ManagerEmail,
+ManagerGenedr,
+ManagerBirthDay,
+ManagerUsername,
+ManagerPassword
+)
+
+VALUES('Michal',
+'Gur',
+'mgur100@gmail.com',
+'Female',
+2004-02-09,
+'Michi',
+'dandan10!*'
+)
+
+
+
+INSERT INTO RoutteCar(
+CarID,
+ClientID,
+RouteDeputureTime,
+RouteArrivalTime,
+RouteDeputureLocation,
+RouteArrivalLocation,
+CarRoutteTypeID)
+VALUES(5,
+8,
+2004-02-09,
+2004-02-10,
+'Hod Hasharon',
+'Raanana',
+1
+)
+
+
+      INSERT INTO Car(
+FleetID,
+CarCurrentLocation,
+CarNumSeats,
+CarNumber,
+CarTypeID,
+CarTank)
+
+VALUES(
+1,
+'Hod Hasharon',
+4,
+0000000,
+4,
+12)
+
+INSERT INTO Fleet(
+FleetDrivingLimit)
+VALUES('Tel Aviv')
+
+INSERT INTO CarType(
+CarTypeName)
+VALUES(
+'T')
+
+INSERT INTO CarRoutteType(
+CarRoutteName)
+VALUES('1')
+
+INSERT INTO CarRoutteType(
+CarRoutteName)
+VALUES('2')
+
+INSERT INTO CarRoutteType(
+CarRoutteName)
+VALUES('3')

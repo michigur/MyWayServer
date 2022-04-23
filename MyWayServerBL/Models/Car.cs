@@ -13,12 +13,12 @@ namespace MyWayServerBL.Models
         }
 
         public int CarId { get; set; }
-        public int? FleetId { get; set; }
+        public int FleetId { get; set; }
         public string CarCurrentLocation { get; set; }
-        public int? CarNumSeats { get; set; }
-        public int? CarNumber { get; set; }
-        public int? CarTypeId { get; set; }
-        public int? CarTank { get; set; }
+        public int CarNumSeats { get; set; }
+        public int CarNumber { get; set; }
+        public int CarTypeId { get; set; }
+        public int CarTank { get; set; }
 
         public virtual CarType CarType { get; set; }
         public virtual Fleet Fleet { get; set; }

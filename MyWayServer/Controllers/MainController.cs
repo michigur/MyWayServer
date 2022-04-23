@@ -113,6 +113,32 @@ namespace MyWayServer.Controllers
 
 
 
+
+
+        [Route("AddCar")]
+        [HttpPost]
+        public Car AddCar([FromBody] Car clien)
+        {
+            //Check user name and password
+            if (clien != null)
+            {
+                this.context.AddCar(clien.CarCurrentLocation, clien.CarNumber, clien.CarNumSeats, clien.CarTank, clien.CarTypeId, clien.FleetId);
+                HttpContext.Session.SetObject("theUser", clien);
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                //Important! Due to the Lazy Loading, the user will be returned with all of its contects!!
+                return clien;
+            }
+            else
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                return null;
+            }
+        }
+
+
+
+
+
         [Route("UpdateUser")]
         [HttpPost]
         public Client UpdateUser([FromBody] Client user)

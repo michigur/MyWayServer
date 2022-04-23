@@ -95,5 +95,22 @@ namespace MyWayServerBL.Models
             };
             return user;
         }
+
+
+
+        public Car AddCar(string currlocation, int num, int numsit, int tank , int cartype, int fleetid)
+        {
+            Car user = new Car()
+            {
+                CarCurrentLocation =currlocation,
+                CarNumber = num,
+                CarNumSeats = numsit,
+                CarTank = tank,
+                CarTypeId = cartype,
+                FleetId = fleetid
+
+            };
+            return user;
+        }
     }
 }

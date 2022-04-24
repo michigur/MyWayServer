@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWayServer", "MyWayServer\MyWayServer.csproj", "{CB92EDBE-7345-4329-9590-6345E77E8FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWayServerBL", "MyWayServerBL\MyWayServerBL.csproj", "{90C87561-054D-46C6-BC57-00978212D4E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWayServerBL", "MyWayServerBL\MyWayServerBL.csproj", "{90C87561-054D-46C6-BC57-00978212D4E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

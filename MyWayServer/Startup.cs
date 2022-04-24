@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MyWayServerBL.Models;
+using MyWayServer.Hubs;
 
 
 namespace MyWayServer
@@ -45,6 +46,10 @@ namespace MyWayServer
             string connectionString = this.Configuration.GetConnectionString("MyWay");
 
             services.AddDbContext<MyWayContext>(options => options.UseSqlServer(connectionString));
+
+
+            //Add SignalR
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +67,7 @@ namespace MyWayServer
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<LocationHub>("/locations");
             });
 
             app.UseEndpoints(endpoints =>

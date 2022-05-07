@@ -98,6 +98,27 @@ namespace MyWayServerBL.Models
 
 
 
+
+        public RoutteCar Newroute(string DeputureLocation, string ArrivalLocation, DateTime DeputureTime, DateTime ArrivalTime, int? RoutteTypeId, int? car, int? clien, CarRoutteType crt, Car c, Client cl)
+        {
+            RoutteCar user = new RoutteCar()
+            { 
+                RouteDeputureLocation = DeputureLocation,
+                RouteArrivalLocation = ArrivalLocation,
+                RouteDeputureTime = DeputureTime,
+                RouteArrivalTime = ArrivalTime,
+                CarRoutteTypeId = RoutteTypeId,
+                CarId = car,
+                ClientId = clien,
+                CarRoutteType = crt,
+                Car = c,
+                //Client = cl
+            };
+
+            return user;
+        }
+
+
         public Car AddCar(string currlocation, int num, int numsit, int tank , int cartype, int fleetid)
         {
             Car user = new Car()

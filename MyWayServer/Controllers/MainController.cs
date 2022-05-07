@@ -39,7 +39,40 @@ namespace MyWayServer.Controllers
                 return null;
             }
         }
- 
+
+
+
+
+
+
+        [Route("NewRoute")]
+        [HttpPost]
+        public RoutteCar NewRoute([FromBody] RoutteCar client)
+        {
+            //Check user name and password
+            if (client != null)
+            {
+                this.context.Newroute(client.RouteDeputureLocation, client.RouteArrivalLocation, client.RouteDeputureTime, client.RouteArrivalTime, client.CarRoutteTypeId, client.CarId, client.ClientId, client.CarRoutteType, client.Car, client.Client);
+                HttpContext.Session.SetObject("theUser", client);
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                //Important! Due to the Lazy Loading, the user will be returned with all of its contects!!
+                return client;
+            }
+            else
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                return null;
+            }
+        
+        
+        }
+
+
+
+
+
+
+
         [Route("Login")]
         [HttpGet]
         public Client Login([FromQuery] string email, [FromQuery] string pass)

@@ -10,6 +10,13 @@ namespace MyWayServer.Hubs
     public class LocationHub: Hub
     {
 
+        public async Task UpdateLocation(int? routeid, string latitude, string longitude)
+        {
+            
+                IClientProxy proxy = Clients.Group(routeid.ToString());
+                await proxy.SendAsync("UpdateCarLocation", latitude, longitude);
+            
+        }
 
         public async Task SendMessageToGroup(string user, string message, string groupName)
         {

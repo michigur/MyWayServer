@@ -112,11 +112,12 @@ namespace MyWayServerBL.Models
                 CarRoutteTypeId = RoutteTypeId,
                 CarId = car,
                 ClientId = clien,
-                CarRoutteType = crt,
-                Car = c,
+               // CarRoutteType = crt,
+               // Car = c,
                 //Client = cl
             };
-
+            this.RoutteCars.Add(user);
+            this.SaveChanges();
             return user;
         }
 
@@ -133,6 +134,8 @@ namespace MyWayServerBL.Models
                 FleetId = fleetid
 
             };
+            this.Cars.Add(user);
+            this.SaveChanges();
             return user;
         }
     }

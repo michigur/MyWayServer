@@ -93,10 +93,12 @@ namespace MyWayServerBL.Models
                 ClientCreditCardNumber = cardnum
                 
             };
+            this.Clients.Add(user);
+            this.SaveChanges();
             return user;
         }
 
-
+         
 
 
         public RoutteCar Newroute(string DeputureLocation, string ArrivalLocation, DateTime DeputureTime, DateTime ArrivalTime, int? RoutteTypeId, int? car, int? clien, CarRoutteType crt, Car c, Client cl)

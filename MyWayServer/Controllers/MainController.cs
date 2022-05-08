@@ -30,6 +30,7 @@ namespace MyWayServer.Controllers
                 this.context.SignUp(client.ClientsEmail,client.ClientsPassword,client.ClientName,client.ClientsLastName,client.ClientsUsername,client.ClientsGenedr,client.ClientsBirthDay, client.ClientCurrentLocation,client.ClientCreditCardNumber,client.ClientCreditCardDate,(int)client.ClientCreditCardCvv);
                 HttpContext.Session.SetObject("theUser", client);
                 Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                client.RoutteCars = new List<RoutteCar>();
                 //Important! Due to the Lazy Loading, the user will be returned with all of its contects!!
                 return client;
             }
